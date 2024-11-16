@@ -135,11 +135,11 @@ function App() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-500 to-purple-600 py-12 px-4 sm:px-6 lg:px-8 rounded-3xl">
+    <div className="min-h-screen bg-gradient-to-br from-blue-500 to-purple-600 py-12 px-4 sm:px-6 lg:px-8 rounded-3xl shadow-[0_0_50px_15px_rgba(255,182,193,0.3),0_0_100px_30px_rgba(135,206,235,0.3)]">
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-12">
-          <h1 className="text-5xl font-extrabold text-white mb-4 tracking-tight">
-            Dinner Tonight
+          <h1 className="text-5xl font-extrabold text-white mb-4 tracking-tight font-serif italic bg-clip-text text-transparent bg-gradient-to-r from-pink-100 via-purple-300 to-indigo-200 animate-gradient-x transform hover:scale-105 transition-transform duration-300 cursor-pointer" style={{textShadow: '2px 2px 4px rgba(0,0,0,0.3)'}}>
+            ✨ Dinner Tonight ✨
           </h1>
           <p className="text-xl text-white opacity-90">
             Generate a unique bio that captures your essence
