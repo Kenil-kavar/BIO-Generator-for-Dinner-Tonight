@@ -32,6 +32,12 @@ except Exception as e:
 
 @api_view(['POST'])
 def generate_bio(request):
+    """
+    Generates a dating profile bio using a two-step process:
+    1. Initial generation with FLAN-T5 model
+    2. Enhancement with Gemini model for more poetic and engaging content
+    Returns error if models fail to initialize or process
+    """
     if not tokenizer or not model:
         return Response(
             {"error": "The AI model failed to initialize. Please check server logs for details."}, 
@@ -48,7 +54,7 @@ def generate_bio(request):
         relationship_goals = data.get('relationshipGoals', [])
 
         # Create a fun and engaging prompt for dating profile bio generation
-        prompt = f"Write a fun, light-hearted, and engaging dating profile bio for someone who loves life! They're a {career} with a passion for {', '.join(interests)}. Their friends would describe them as {', '.join(personality_traits)}. When it comes to relationships, they're open to {', '.join(relationship_goals)}. Make it playful and authentic!"
+        prompt = f"Write a fun, light-hearted,poetic and engaging dating profile bio for someone who loves life! They're a {career} with a passion for {', '.join(interests)}. Their friends would describe them as {', '.join(personality_traits)}. When it comes to relationships, they're open to {', '.join(relationship_goals)}. Make it playful and authentic!"
 
         # Tokenize and generate initial bio
         inputs = tokenizer(prompt, return_tensors="pt", max_length=512, truncation=True)
@@ -112,4 +118,5 @@ def generate_bio(request):
 
 @api_view(['GET'])
 def health_check(request):
+    """Simple endpoint to verify API is running"""
     return Response({"status": "Healthy"}, status=status.HTTP_200_OK)
