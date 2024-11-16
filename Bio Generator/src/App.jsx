@@ -1,7 +1,9 @@
 import { useState } from 'react'
 import './App.css'
 
+// Main App component that handles the bio generation form and display
 function App() {
+  // State management for form data, generated bio, loading state, display state and errors
   const [formData, setFormData] = useState({
     career: '',
     interests: [],
@@ -13,6 +15,7 @@ function App() {
   const [showBio, setShowBio] = useState(false)
   const [error, setError] = useState(null)
 
+  // Predefined options for the career dropdown
   const careerOptions = [
     'Software Engineer',
     'Entrepreneur', 
@@ -26,6 +29,7 @@ function App() {
     'Musician'
   ]
 
+  // Predefined options for interests checkboxes
   const interestOptions = [
     'Cooking',
     'Travel', 
@@ -40,6 +44,7 @@ function App() {
     'Literature'
   ]
 
+  // Predefined options for personality trait checkboxes
   const personalityOptions = [
     'Adventurous',
     'Creative',
@@ -52,6 +57,7 @@ function App() {
     'Introverted'
   ]
 
+  // Predefined options for relationship goal checkboxes
   const relationshipGoalOptions = [
     'Casual',
     'Long-term',
@@ -61,10 +67,12 @@ function App() {
     'Marriage Minded'
   ]
 
+  // Handler for career dropdown changes
   const handleCareerChange = (e) => {
     setFormData({...formData, career: e.target.value})
   }
 
+  // Handler for checkbox changes (interests, personality traits, relationship goals)
   const handleCheckboxChange = (type, value) => {
     setFormData(prev => ({
       ...prev,
@@ -74,13 +82,14 @@ function App() {
     }))
   }
 
+  // Form submission handler with API calls and error handling
   const handleSubmit = async (e) => {
     e.preventDefault()
     setLoading(true)
     setError(null)
   
     try {
-      // Check if server is running with timeout and error handling
+      // Health check to ensure server is running
       const healthCheck = await Promise.race([
         fetch('http://localhost:8000/api/health/', {
           method: 'GET',
@@ -98,7 +107,7 @@ function App() {
         throw new Error('Server is not running. Please start the server first.')
       }
   
-      // Send form data to backend for bio generation with timeout and error handling
+      // API call to generate bio
       const response = await Promise.race([
         fetch('http://localhost:8000/api/generate-bio/', {
           method: 'POST',
@@ -134,9 +143,11 @@ function App() {
     }
   }
 
+  // Main UI render with gradient background and form components
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-500 to-purple-600 py-12 px-4 sm:px-6 lg:px-8 rounded-3xl shadow-[0_0_50px_15px_rgba(255,182,193,0.3),0_0_100px_30px_rgba(135,206,235,0.3)]">
       <div className="max-w-4xl mx-auto">
+        {/* Header section with title and description */}
         <div className="text-center mb-12">
           <h1 className="text-5xl font-extrabold text-white mb-4 tracking-tight font-serif italic bg-clip-text text-transparent bg-gradient-to-r from-pink-100 via-purple-300 to-indigo-200 animate-gradient-x transform hover:scale-105 transition-transform duration-300 cursor-pointer" style={{textShadow: '2px 2px 4px rgba(0,0,0,0.3)'}}>
             ✨ Dinner Tonight ✨
@@ -147,17 +158,18 @@ function App() {
         </div>
 
         <div className="bg-gray-800 rounded-xl shadow-2xl p-8">
-          {/* Error Message */}
+          {/* Error message display */}
           {error && (
             <div className="mb-4 p-4 bg-red-100 border border-red-400 text-red-700 rounded">
               {error}
             </div>
           )}
 
-          {/* Form Section */}
+          {/* Form section with career, interests, personality, and relationship goals */}
           <div className={`transition-opacity duration-500 ease-in-out ${showBio ? 'hidden' : 'block'}`}>
             <form onSubmit={handleSubmit} className="space-y-8">
               <div className="space-y-6">
+                {/* Career selection dropdown */}
                 <div className="transition-all duration-300 ease-in-out transform hover:scale-102">
                   <label className="block text-lg font-medium text-gray-200 mb-3">
                     What&apos;s Your Career?
@@ -175,6 +187,7 @@ function App() {
                   </select>
                 </div>
 
+                {/* Interests selection checkboxes */}
                 <div className="transition-all duration-300 ease-in-out">
                   <label className="block text-lg font-medium text-gray-200 mb-3">
                     What Are Your Interests? (Select Multiple)
@@ -197,6 +210,7 @@ function App() {
                   </div>
                 </div>
 
+                {/* Personality traits selection checkboxes */}
                 <div className="transition-all duration-300 ease-in-out">
                   <label className="block text-lg font-medium text-gray-200 mb-3">
                     What Are Your Personality Traits? (Select Multiple)
@@ -219,6 +233,7 @@ function App() {
                   </div>
                 </div>
 
+                {/* Relationship goals selection checkboxes */}
                 <div className="transition-all duration-300 ease-in-out">
                   <label className="block text-lg font-medium text-gray-200 mb-3">
                     What Are Your Relationship Goals? (Select Multiple)
@@ -242,6 +257,7 @@ function App() {
                 </div>
               </div>
 
+              {/* Submit button with validation and loading state */}
               <button
                 type="submit"
                 disabled={loading || !formData.career || formData.interests.length === 0 || formData.personalityTraits.length === 0 || formData.relationshipGoals.length === 0}
@@ -252,7 +268,7 @@ function App() {
             </form>
           </div>
 
-          {/* Bio Display Section */}
+          {/* Generated bio display section */}
           <div className={`transition-opacity duration-500 ease-in-out ${showBio ? 'block' : 'hidden'}`}>
             <div className="flex flex-col space-y-4">
               <h2 className="text-2xl font-semibold text-gray-200">Your Generated Bio</h2>
