@@ -84,8 +84,8 @@ def generate_bio(request):
         gemini_prompt = f"""Using these bios as reference for style and tone:
         {reference_bios}
         
-        Transform this profile bio into a engaging and authentic version for our DinnerTonight user while maintaining the same information and personality: {initial_bio}
-        Generate a bio of 27 to 37 words, maximum 3 lines, that captures their essence in a poetic,rethmic, fantacyin such a flowing way that their partner will be impressed from there bio."""
+        Transform this profile bio in a poetic, rethmic, engaging and authentic version for our DinnerTonight user while maintaining the information and personality: {initial_bio}
+        Generate a bio of 30 to 45 words, maximum 3 lines, that captures their essence in a natural, flowing way and smoother."""
         
         try:
             gemini_response = gemini_model.generate_content(
