@@ -26,8 +26,8 @@ Follow these instructions to get the project all set up and running:
 Open a new terminal.
 Navigate into the Django project directory:
 
-Code:->>  cd BIO-Generator-for-Dinner-Tonight/Bio Generator/bio_project
+>>  cd BIO-Generator-for-Dinner-Tonight/Bio Generator/bio_project
 Run the server:
 
-Code:->> python manage.py runserver
+>> python manage.py runserver
 
