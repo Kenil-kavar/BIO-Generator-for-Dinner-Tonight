@@ -16,7 +16,6 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
-# Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
@@ -42,7 +41,7 @@ CORS_ALLOW_METHODS = [
 
 # Application definition
 
-# ... existing code ...
+
 
 INSTALLED_APPS = [
     "django.contrib.admin",
@@ -51,13 +50,13 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     'rest_framework',
     'bio_generator',
-    'corsheaders',  # Make sure this is here
+    'corsheaders', 
     "django.contrib.messages",
     "django.contrib.staticfiles",
 ]
 
 MIDDLEWARE = [
-    'corsheaders.middleware.CorsMiddleware',  # Must be first
+    'corsheaders.middleware.CorsMiddleware',  
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -73,10 +72,7 @@ CORS_ALLOW_CREDENTIALS = True
 CORS_ALLOW_METHODS = ['*']
 CORS_ALLOW_HEADERS = ['*']
 
-# Remove or comment out this if present
-# CORS_ALLOWED_ORIGINS = [
-#     "http://localhost:5173",
-# ]
+
 ROOT_URLCONF = "bio_project.urls"
 
 TEMPLATES = [
@@ -98,8 +94,6 @@ TEMPLATES = [
 WSGI_APPLICATION = "bio_project.wsgi.application"
 
 
-# Database
-# https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 DATABASES = {
     "default": {
@@ -108,9 +102,6 @@ DATABASES = {
     }
 }
 
-
-# Password validation
-# https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -128,7 +119,7 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 import os
 
-# ... other settings ...
+
 
 # Add these settings
 TEMPLATES = [
@@ -151,7 +142,7 @@ TEMPLATES = [
 
 # Add static files configuration
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),  # Use 'static' instead of 'build/static'
+    os.path.join(BASE_DIR, 'static'),  
 ]
 
 STATIC_URL = '/static/'
@@ -159,7 +150,6 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 
 # Internationalization
-# https://docs.djangoproject.com/en/5.1/topics/i18n/
 
 LANGUAGE_CODE = "en-us"
 
@@ -175,7 +165,5 @@ USE_TZ = True
 
 STATIC_URL = "static/"
 
-# Default primary key field type
-# https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
