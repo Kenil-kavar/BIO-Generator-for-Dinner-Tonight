@@ -7,12 +7,14 @@ import os
 import torch
 from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
 import google.generativeai as genai
+from dotenv import load_dotenv
 
 # Load the model and tokenizer once during the app startup
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
 # Configure Gemini
-genai.configure(api_key='AIzaSyC3GoKe_fGNIO8t87FbpWym1H9Qfjsd34k')
+load_dotenv()
+genai.configure(api_key=os.getenv('GEMINI_API_KEY'))
 gemini_model = genai.GenerativeModel('gemini-pro')
 
 try:
