@@ -145,7 +145,7 @@ function App() {
 
   // Main UI render with gradient background and form components
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-500 to-purple-600 py-12 px-4 sm:px-6 lg:px-8 rounded-3xl shadow-[0_0_50px_15px_rgba(255,182,193,0.3),0_0_100px_30px_rgba(135,206,235,0.3)]">
+    <div className="min-h-screen bg-gradient-to-br from-blue-500 to-purple-600 py-12 px-4 sm:px-6 lg:px-8 rounded-3xl shadow-[0_0_25px_8px_rgba(255,182,193,0.2),0_0_50px_15px_rgba(135,206,235,0.2)]">
       <div className="max-w-4xl mx-auto">
         {/* Header section with title and description */}
         <div className="text-center mb-12">
