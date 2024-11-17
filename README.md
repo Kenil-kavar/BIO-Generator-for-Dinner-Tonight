@@ -8,7 +8,7 @@ Follow these instructions to get the project all set up and running:
 
 2. Change into the Project Directory
 
->>cd BIO-Generator-for-Dinner-Tonight/Bio Generator
+>>cd BIO-Generator-for-Dinner-Tonight/Bio\ Generator
 
 3. Install Frontend Dependencies
 
@@ -26,7 +26,7 @@ Follow these instructions to get the project all set up and running:
 Open a new terminal.
 Navigate into the Django project directory:
 
->>  cd BIO-Generator-for-Dinner-Tonight/Bio Generator/bio_project
+>>  cd BIO-Generator-for-Dinner-Tonight/Bio\ Generator/bio_project
 
 Run the server:
 
